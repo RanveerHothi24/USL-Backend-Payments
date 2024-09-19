@@ -1,7 +1,7 @@
 require 'stripe'
 require 'sinatra'
 
-Stripe.api_key = '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'
+Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 
 set :port, 4242
 
