@@ -11,6 +11,10 @@ configure do
   enable :cross_origin
 end
 
+get '/' do
+  'Backend is running!'
+end
+
 post '/create-checkout-session' do
   content_type 'application/json'
 
