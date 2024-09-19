@@ -46,5 +46,5 @@ post '/create-checkout-session' do
   rescue => e
     status 500
     { error: e.message }.to_json # Return error in JSON format
-  end
+  
 end
