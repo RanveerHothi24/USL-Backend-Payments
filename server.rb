@@ -11,6 +11,18 @@ configure do
   enable :cross_origin
 end
 
+before do
+  response.headers['Access-Control-Allow-Origin'] = 'https://universitysuperleague.com'
+  response.headers['Access-Control-Allow-Methods'] = ['GET', 'POST', 'OPTIONS']
+  response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+end
+
+options "*" do
+  response.headers["Allow"] = "GET, POST, OPTIONS"
+  response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+  200
+end
+
 get '/' do
   'Backend is running!'
 end
@@ -27,6 +39,6 @@ post '/create-checkout-session' do
     success_url: YOUR_DOMAIN + '/success.html',
     cancel_url: YOUR_DOMAIN + '/cancel.html',
   })
-  status 200
+  
   { url: session.url }.to_json # Return the session URL as JSON
 end
