@@ -20,6 +20,8 @@ end
 options "*" do
   response.headers["Allow"] = "GET, POST, OPTIONS"
   response.headers["Access-Control-Allow-Headers"] = "Content-Type"
+  response.headers["Access-Control-Allow-Origin"] = 'https://universitysuperleague.com'
+  response.headers["Access-Control-Allow-Methods"] = 'GET, POST, OPTIONS'
   200
 end
 
@@ -32,13 +34,17 @@ post '/create-checkout-session' do
 
   session = Stripe::Checkout::Session.create({
     line_items: [{
-      price: 'price_1Q01j6HThqRnB4qJKwGEGYWD',
+      price: 'prod_QoSzuovFVHvLTA',
       quantity: 1,
     }],
     mode: 'payment',
-    success_url: YOUR_DOMAIN + '/success.html',
-    cancel_url: YOUR_DOMAIN + '/cancel.html',
+    success_url: "#{YOUR_DOMAIN}success.html",
+    cancel_url: "#{YOUR_DOMAIN}cancel.html",
   })
   
   { url: session.url }.to_json # Return the session URL as JSON
+  rescue => e
+    status 500
+    { error: e.message }.to_json # Return error in JSON format
+  end
 end
