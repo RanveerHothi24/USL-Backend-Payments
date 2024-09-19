@@ -7,6 +7,10 @@ set :port, 4242
 
 YOUR_DOMAIN = 'https://universitysuperleague.com/'
 
+configure do
+  enable :cross_origin
+end
+
 post '/create-checkout-session' do
   content_type 'application/json'
 
