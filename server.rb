@@ -45,7 +45,7 @@ post '/create-checkout-session' do
 
     session = Stripe::Checkout::Session.create({
       line_items: [{
-        price: 'prod_QoSzuovFVHvLTA', # Replace with actual price ID
+        price: 'price_1Pwq3DHThqRnB4qJTS6G3PCl', # Replace with actual price ID
         quantity: 1,
       }],
       mode: 'payment',
