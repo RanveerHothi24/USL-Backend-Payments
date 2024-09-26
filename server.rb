@@ -45,12 +45,12 @@ post '/create-checkout-session' do
 
     session = Stripe::Checkout::Session.create({
       line_items: [{
-        price: 'price_1Pwq3DHThqRnB4qJTS6G3PCl', # Replace with actual price ID
+        price: 'price_1Q3Kq0HThqRnB4qJGhU8z1xr', # Replace with actual price ID
         quantity: 1,
       }],
       mode: 'payment',
-      success_url: "#{YOUR_DOMAIN}/success.html",
-      cancel_url: "#{YOUR_DOMAIN}/cancel.html",
+      success_url: "#{YOUR_DOMAIN}/SignUp.html?payment_status=success",
+      cancel_url: "#{YOUR_DOMAIN}/SignUp.html",
     })
 
     # Log success
