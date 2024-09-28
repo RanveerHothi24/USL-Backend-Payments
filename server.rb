@@ -49,7 +49,7 @@ post '/create-checkout-session' do
         quantity: 1,
       }],
       mode: 'payment',
-      success_url: "#{YOUR_DOMAIN}/success.html",
+      success_url: "#{YOUR_DOMAIN}/SignUp.html?payment_status=success",
       cancel_url: "#{YOUR_DOMAIN}/Sign.html",
     })
 
